@@ -4,8 +4,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y --no-install-rec
     net-tools telnet curl\
     traceroute iptables nmap \
     nano vim-tiny iputils-ping \
-    openssh-client openssh-server \
-    build-essential ufw apache2\ 
+    openssh-client openssh-server ufw\ 
     && rm -rf /var/lib/apt/lists/*
 
 ADD https://raw.githubusercontent.com/adosztal/gns3-containers/master/dns/dnsmasq.conf /etc/dnsmasq.conf
