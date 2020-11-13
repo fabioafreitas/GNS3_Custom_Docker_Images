@@ -1,0 +1,66 @@
+#tutorial
+https://www.tecmint.com/setup-a-dns-dhcp-server-using-dnsmasq-on-centos-rhel/
+
+
+#fazer backup
+cp /etc/dnsmasq.conf /etc/dnsmasq.conf.backup
+
+#deixar arquivo dnsmasq.conf em branco, para melhor vizualização
+rm /etc/dnsmasq.conf
+touch /etc/dnsmasq.conf
+
+
+
+
+#editar dnsmasq.conf com as configs abaixo
+nano /etc/dnsmasq.conf
+-----------------------------
+# Google's nameservers
+server=8.8.8.8
+server=8.8.4.4
+
+#Ip de onde o servidor esta hospedado
+listen-address=127.0.0.1,10.2.0.2
+
+#Interface na qual ele esta sendo executado
+interface=eth0
+
+#Comando para permitir que o servico possua um nome dominio
+expand-hosts
+
+#Nome dominio do servico dnsmasq
+domain=redes.net
+
+#Atribuindo dominio ao ip do servico
+address=/redes.net/127.0.0.1 
+address=/redes.net/10.2.0.2
+-----------------------------
+
+
+
+#editar o endereco dns da maquina
+nano /etc/resolv.conf
+nameserver 127.0.0.1
+
+
+
+#adicionar as seguintes linhas no final do arquivo /etc/hosts
+#sao os nomes que serao resolvidos pelo dnsmasq
+nano /etc/hosts
+-----------------------------
+10.2.3.129 vlan25
+10.2.3.1 vlan35
+10.2.0.1 gateway
+10.2.0.3 www
+10.2.0.4 api
+10.2.0.5 mysql
+10.2.0.6 firefox
+-----------------------------
+
+
+
+
+#reiniciar o servico dnsmasq
+service dnsmasq restart
+service dnsmasq status
+

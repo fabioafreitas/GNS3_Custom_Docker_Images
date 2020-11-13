@@ -1,0 +1,49 @@
+docker build -t alpine_c_cpp ./alpine_c_cpp/
+docker build -t alpine_java8 ./alpine_java8/
+docker build -t alpine_nodejs ./alpine_nodejs/
+docker build -t alpine_php7 ./alpine_php7/
+docker build -t alpine_python3 ./alpine_python3/
+docker build -t ubuntu_apache2 ./ubuntu_apache2/
+docker build -t ubuntu_bind9 ./ubuntu_bind9/
+docker build -t ubuntu_dnsmasq ./ubuntu_dnsmasq/
+docker build -t ubuntu_mongodb ./ubuntu_mongodb/
+docker build -t ubuntu_mysql ./ubuntu_mysql/
+docker build -t ubuntu_network_tools ./ubuntu_network_tools/
+
+docker push fabioafreitas/ubuntu_mysql:latest
+docker push fabioafreitas/ubuntu_mongodb:latest
+docker push fabioafreitas/ubuntu_dnsmasq:latest
+docker push fabioafreitas/ubuntu_bind9:latest
+docker push fabioafreitas/ubuntu_apache2:latest
+docker push fabioafreitas/alpine_python3:latest
+docker push fabioafreitas/alpine_php7:latest
+docker push fabioafreitas/alpine_nodejs:latest
+docker push fabioafreitas/alpine_java8:latest
+docker push fabioafreitas/alpine_c_cpp:latest
+
+docker commit b15c9e5f591c fabioafreitas/ubuntu_mysql:latest
+docker commit a517cc4db507 fabioafreitas/ubuntu_mongodb:latest
+docker commit 89ec52634ddf fabioafreitas/ubuntu_dnsmasq:latest
+docker commit 64af6484ddbe fabioafreitas/ubuntu_bind9:latest
+docker commit 6479e24138ce fabioafreitas/ubuntu_apache2:latest
+docker commit c4fa14bc1a97 fabioafreitas/alpine_python3:latest
+docker commit 88e54c446343 fabioafreitas/alpine_php7:latest
+docker commit f6de21db46a5 fabioafreitas/alpine_nodejs:latest
+docker commit c7fc06c43b33 fabioafreitas/alpine_java8:latest
+docker commit d10b463229a1 fabioafreitas/alpine_c_cpp:latest
+
+docker rm -vf $(docker ps -a -q)
+docker rmi -f $(docker images -a -q)
+
+
+fabioafreitas/ubuntu_network_tools:latest
+fabioafreitas/ubuntu_mysql:latest
+fabioafreitas/ubuntu_mongodb:latest
+fabioafreitas/ubuntu_dnsmasq:latest
+fabioafreitas/ubuntu_bind9:latest
+fabioafreitas/ubuntu_apache2:latest
+fabioafreitas/alpine_python3:latest
+fabioafreitas/alpine_php7:latest
+fabioafreitas/alpine_nodejs:latest
+fabioafreitas/alpine_java8:latest
+fabioafreitas/alpine_c_cpp:latest
