@@ -1,6 +1,6 @@
-FROM alpine
-RUN apk update
-RUN apk add python3 py3-websocket-client py3-flask py3-django 
-RUN apk add nano net-tools nmap
+FROM jordanirabor/python3.7-pip-pipenv
+RUN apt-get update -y
+RUN apt-get install -y vim-tiny iputils-ping
+RUN pip3 install flask flask_cors mysql-connector-python websockets
 VOLUME [ "/root" ]
-CMD ["/bin/sh"]
+CMD [ "sh", "-c", "cd; exec bash -i" ]
